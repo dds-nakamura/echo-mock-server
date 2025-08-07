@@ -12,6 +12,11 @@ app.post("/api/echo", (req, res) => {
   const source = req.body.source || "unknown";
   const lineno = req.body.lineno || 0;
   const colno = req.body.colno || 0;
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "https://login.dds.click");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Credentials", true);
   res.json({
     message: message,
     source: source,
@@ -19,11 +24,6 @@ app.post("/api/echo", (req, res) => {
     colno: colno,
   });
   console.log(`Received message: ${message}, source: ${source}, lineno: ${lineno}, colno: ${colno}`);
-  res.header("Content-Type", "application/json");
-  res.header("Access-Control-Allow-Origin", "https://login.dds.click");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  res.header("Access-Control-Allow-Credentials", true);
 });
 
 app.options("/api/echo", (req, res) => {
