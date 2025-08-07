@@ -18,6 +18,7 @@ app.post("/api/echo", (req, res) => {
     lineno: lineno,
     colno: colno,
   });
+  console.log(`Received message: ${message}, source: ${source}, lineno: ${lineno}, colno: ${colno}`);
   res.header("Content-Type", "application/json");
   res.header("Access-Control-Allow-Origin", "https://login.dds.click");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
